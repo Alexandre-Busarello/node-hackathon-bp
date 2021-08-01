@@ -10,7 +10,6 @@
         "start-no-daemon": "pm2 start production.config.json --no-daemon",
         "start-node": "node build/index.js",
         "dev": "ts-node-dev src/index.ts",
-        "test": "jest -i --colors --verbose --detectOpenHandles",
         "lint": "eslint src --ext .ts",
         "build": "tsc -p tsconfig.build.json",
         "typecheck": "tsc --noEmit",
@@ -26,10 +25,11 @@
         "express-passport-logout": "^0.1.0",
         "joi": "^17.4.1",
         "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.13.5",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",
-        "sqlite3": "5.0.2",
         "pm2": "^5.1.0",
+        "sqlite3": "5.0.2",
         "typeorm": "0.2.34"
     },
     "devDependencies": {

@@ -1,14 +1,8 @@
-/*
-
-Copyright (c) 2019 - present AppSeed.us
-
-*/
-
 import passport from 'passport';
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
 
 import User from '../models/user';
-import { connection } from '../server/database';
+import { connection } from '../db/sqlite';
 
 export default (pass: passport.PassportStatic) => {
   const opts = {

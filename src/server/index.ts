@@ -2,35 +2,30 @@ import 'dotenv/config';
 
 import compression from 'compression';
 import cors from 'cors';
-/*
 
-Copyright (c) 2019 - present AppSeed.us
-
-*/
 import express from 'express';
-import passport from 'passport';
+// import passport from 'passport';
+// import initPassport from '../config/passport';
 
-import initPassport from '../config/passport';
-import routes from '../routes/users';
-import { connect } from './database';
+import homeRoutes from '../routes/home';
+import userRoutes from '../routes/users';
+import { connect } from '../db/mongoose';
+// import { connect } from '../db/sqlite';
 
 // Instantiate express
 const server = express();
 server.use(compression());
 
 // Passport Config
-initPassport(passport);
-server.use(passport.initialize());
+// initPassport(passport);
+// server.use(passport.initialize());
 
-// Connect to sqlite
-if (process.env.NODE_ENV !== 'test') {
-  connect();
-}
+connect();
 
 server.use(cors());
 server.use(express.json());
 
-// Initialize routes middleware
-server.use('/api/users', routes);
+server.use('/api', homeRoutes);
+server.use('/api/users', userRoutes);
 
 export default server;
